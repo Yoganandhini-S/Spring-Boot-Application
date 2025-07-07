@@ -52,13 +52,13 @@
             background-color: red;
         }
         .logout-button {
-            background-color: #f44336; /* red/orange */
+            background-color: red;
             margin-top: 20px;
             padding: 10px 20px;
             border-radius: 8px;
         }
         .logout-button:hover {
-            background-color: #d32f2f;
+            background-color: green;
         }
         a {
             text-decoration: none;
@@ -103,3 +103,4 @@
     </a>
 </body>
 </html>
+
