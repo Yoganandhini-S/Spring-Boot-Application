@@ -48,6 +48,18 @@
         button:hover {
             background-color: #007bb5;
         }
+        .delete-button {
+            background-color: red;
+        }
+        .logout-button {
+            background-color: #f44336; /* red/orange */
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
         a {
             text-decoration: none;
         }
@@ -65,30 +77,29 @@
             <th>Category</th>
             <th>Price</th>
             <th>Actions</th>
-    <c:forEach var="book" items="${books}">
-    <tr>
-        <td>${book.bookNo}</td>
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.publisher}</td>
-        <td>${book.category}</td>
-        <td>${book.price}</td>
-        <td>
-            <a href="/edit/${book.bookNo}">
-                <button>Edit</button>
-            </a>
-            <a href="/delete/${book.bookNo}" onclick="return confirm('Are you sure you want to delete this book?');">
-                <button style="background-color: red;">Delete</button>
-               
-            </a>
-             
-        </td>
-    </tr>
-</c:forEach>
-        
+        </tr>
+        <c:forEach var="book" items="${books}">
+            <tr>
+                <td>${book.bookNo}</td>
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>${book.publisher}</td>
+                <td>${book.category}</td>
+                <td>${book.price}</td>
+                <td>
+                    <a href="/edit/${book.bookNo}">
+                        <button>Edit</button>
+                    </a>
+                    <a href="/delete/${book.bookNo}" onclick="return confirm('Are you sure you want to delete this book?');">
+                        <button class="delete-button">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
 
-    <br>
-    <a href="logout">Logout</a>
+    <a href="logout">
+        <button class="logout-button">Logout</button>
+    </a>
 </body>
 </html>
