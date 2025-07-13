@@ -26,34 +26,34 @@ public class BookController {
 
     @Autowired
     Repository_login rep;
-
+    
     @GetMapping("/login")
     public String loginPage() {
-        return "login";
+        return "/WEB-INF/pages/login";
     }
 
     @PostMapping("/submitLogin")
     public String submitLogin(LoginModel login) {
         rep.save(login);
-        return "addBook";
+        return "/WEB-INF/pages/addBook";
     }
 
     @GetMapping("/addBook")
     public String addBook() {
-        return "addBook";
+        return "/WEB-INF/pages/addBook";
     }
 
     @PostMapping("/submit")
     public String submit(PathModel book) {
         repo.save(book);
-        return "index";
+        return "/WEB-INF/pages/index";
     }
 
     @GetMapping("/view")
     public String viewBooks(HttpServletRequest request) {
         List<PathModel> books = repo.findAll();
         request.setAttribute("books", books);
-        return "view";
+        return "/WEB-INF/pages/view";
     }
 
  // Login Form Submission
@@ -65,28 +65,28 @@ public class BookController {
         if ("Yoga".equals(username) && "Yoga@123".equals(password)) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            return "redirect:/home";
+            return "redirect:/WEB-INF/pages/home";
         } else {
             request.setAttribute("error", "Invalid username or password");
-            return "login";
+            return "/WEB-INF/pages/login";
         }
     }
     @GetMapping("/home")
     public String home() {
-        return "index"; // assumes home.html is in src/main/resources/templates/
+        return "/WEB-INF/pages/index"; 
     }
 
     // Logout
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/WEB-INF/pages/login";
     }
  // Delete Book by ID
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") int id) {
         repo.deleteById(id);
-        return "redirect:/view";
+        return "redirect:/WEB-INF/pages/view";
     }
 
     // Show form with existing book data for update
@@ -94,14 +94,14 @@ public class BookController {
     public String editBook(@PathVariable("id") int id, HttpServletRequest request) {
         PathModel book = repo.findById(id).orElse(null);
         request.setAttribute("book", book);
-        return "edit"; // New JSP page for editing
+        return "/WEB-INF/pages/edit"; // New JSP page for editing
     }
 
     // Update book (POST)
     @PostMapping("/update")
     public String updateBook(@ModelAttribute PathModel book) {
         repo.save(book);
-        return "redirect:/view";
+        return "redirect:/WEB-INF/pages/view";
     }
 
 }

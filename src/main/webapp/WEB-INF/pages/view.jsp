@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+   <link rel="icon" type="image/x-icon" href="C:\Users\nandh\eclipse-workspace\BookApplication\src\main\webapp\icon.png">
+   
     <title>Book List</title>
     <style>
         body {
@@ -52,7 +54,11 @@
             background-color: red;
         }
         .logout-button {
+<<<<<<< HEAD
             background-color: red;
+=======
+            background-color: red; 
+>>>>>>> 50ddea4 (initial commit)
             margin-top: 20px;
             padding: 10px 20px;
             border-radius: 8px;
@@ -103,4 +109,7 @@
     </a>
 </body>
 </html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 50ddea4 (initial commit)
